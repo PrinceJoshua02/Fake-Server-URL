@@ -1,0 +1,32 @@
+﻿@model List<Todo>
+
+<h2>Todos</h2>
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>ID</th>
+            <th>Title</th>
+            <th>Completed</th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var todo in Model)
+        {
+            <tr>
+                <td>@todo.Id</td>
+                <td>@todo.Title</td>
+                <td>@(todo.Completed ? "Yes" : "No")</td>
+                <td>
+                    <a href="@Url.Action("Edit", new { id = todo.Id })">Edit</a> |
+                    <a href="@Url.Action("Delete", new { id = todo.Id })">Delete</a>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
+
+<p>
+    <a href="@Url.Action("Create")">Create New Todo</a>
+</p>
